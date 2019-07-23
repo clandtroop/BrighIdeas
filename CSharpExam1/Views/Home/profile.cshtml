@@ -1,0 +1,8 @@
+@model Users
+
+    <p>@Model.Name</p>
+    <p>@Model.Alias</p>
+    <p>@Model.Email</p>
+
+    <p>Total Posts by @Model.Alias: @Model.Messages.Count()</p>
+    <p>Total # of Likes: @Model.Likes.Count()</p>

@@ -1,0 +1,43 @@
+ @model IndexView
+    <div class="container mb-4">
+        <h4>Hello @ViewBag.Alias!</h4>
+        <a href="/logout" class="btn btn-warning btn-sm float-right">Log Out</a>
+    </div>
+    <form action="success" method="post">
+        <div class="form-group col-5">
+            <span asp-validation-for="NewMessage.Message"></span>
+            <label asp-for="NewMessage.Message"></label>
+            <input asp-for="NewMessage.Message" placeholder="Share your bridea with us!" class="form-control"rows="3">
+            <input value="@ViewBag.UserId" type="hidden" asp-for="NewMessage.UserId">
+        </div>
+            <button class="btn btn-primary" type="submit">Share your bridea</button>
+    </form>
+    </div>        
+    <div class="col-4 mx-auto mt-5">
+        <ul class="list-unstyled mt-5">
+            @{foreach(var m in Model.AllMessages)
+            {
+            if(m.UserId == @ViewBag.UserId)
+            {
+                <div class="border border-secondary text-center">
+            <li class="mt-4"><a href="/profile/@m.UserId"> @m.Creator.Alias</a>  Says:</li>
+            <li>@m.Message</li>
+            <li><a href="/success/addassociation/@m.MessageId">Like</a></li>
+            <li class="mb-3"><a href="likes/@m.MessageId">@m.Likes.Count() Users</a> Like This Idea</li>
+                <a href="/deletemessage/@m.MessageId">
+                <img class="mb-2" src="https://img.icons8.com/offices/30/000000/delete-message.png"></a>
+            </div>
+            }
+            else
+            {
+            <div class="border border-secondary text-center">
+            <li class="mt-4"><a href="/profile/@m.UserId"> @m.Creator.Alias</a>  Says:</li>
+            <li>@m.Message</li>
+            <li><a href="/success/addassociation/@m.MessageId">Like</a></li>
+            <li class="mb-3"><a href="likes/@m.MessageId">@m.Likes.Count() Users</a> Like This Idea</li>
+            </div>
+            }
+            }
+            }
+        </ul>
+    </div>

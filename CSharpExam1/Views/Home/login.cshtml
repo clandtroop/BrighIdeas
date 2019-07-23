@@ -1,0 +1,20 @@
+@model login
+
+<div class="container">
+    <form action="/login" method="post" style="Width: 470px">
+        <h5>Login to your account:</h5>
+        <div class="form-group row mt-3">
+            <label asp-for="emaill"></label>
+            <span asp-validation-for="emaill" class="text-danger"></span>
+            <input asp-for="emaill" class="form-control" placeholder="Your email">
+        </div>
+        <div class="form-group row">
+            <label asp-for="passwordl"></label>
+            <span asp-validation-for="passwordl" class="text-danger"></span>
+            <input type="password" asp-for="passwordl" class="form-control" placeholder="Your password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+
