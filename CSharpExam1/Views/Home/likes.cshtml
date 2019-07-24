@@ -1,0 +1,27 @@
+@model Messages
+
+<a href="/success" class="btn btn-primary btn-sm float-right">Back to Ideas</a>
+
+<a href="/logout" class="btn btn-warning btn-sm float-right mr-3">Log Out</a>
+
+<div>
+    <h4>@Model.Creator.Alias Says:</h4>
+    <h5 class="ml-3">@Model.Message</h5>
+
+    <h5 class="mt-5 text-center">People who liked this post:</h5>
+    <table class="table table-bordered col-3 text-center mx-auto">
+        <thead class="table table-dark">
+            <th>Alias</th>
+            <th>Name</th>
+        </thead>
+        @{foreach(var m in Model.Likes)
+        {
+        <tbody>
+            <td><a href="/profile/@m.UserId">@m.Users.Alias</a></td>
+            <td>@m.Users.Name</td>
+        </tbody>
+        }
+        }
+    </table>
+
+</div>
